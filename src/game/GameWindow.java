@@ -11,6 +11,8 @@ public class GameWindow extends JFrame
     public static boolean isDownPress;
     public static boolean isRightPress;
     public static boolean isLeftPress;
+    public static boolean isFirePress;
+    public static boolean isEnterPress;
     //static se tao ra moi thuoc tinh khi game window co 1 class
     public GameWindow()
     {
@@ -35,6 +37,14 @@ public class GameWindow extends JFrame
                 {
                     isRightPress = true;
                 }
+                if(e.getKeyCode() == KeyEvent.VK_SPACE)
+                {
+                    isFirePress = true;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    isEnterPress = true;
+                }
             }
 
             @Override
@@ -55,6 +65,14 @@ public class GameWindow extends JFrame
                 if(e.getKeyCode() == KeyEvent.VK_D)
                 {
                     isRightPress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_SPACE)
+                {
+                    isFirePress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    isEnterPress = false;
                 }
             }
         }
