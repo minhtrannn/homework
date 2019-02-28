@@ -4,33 +4,32 @@ import tklibs.SpriteUtils;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
-public class Enemy {
+public class Enemy extends  GameObject{
 
-    BufferedImage image;
-    Vector2D position;
-    Vector2D velocity;
+    int fireCount;
+    int bulletType;
     public Enemy()
     {
+        fireCount = 0;
         image = SpriteUtils.loadImage("assets/images/enemies/level0/pink/0.png");
-        position = new Vector2D(-50,-50);
-        velocity = new Vector2D(2,2);
+        position.set(-50,-50);
+        velocity.set(2,2);
         velocity.setAngle(Math.PI/18);
-        velocity.setLength(2);
+        velocity.setLength(Settings.ENEMYSPEED);
+        bulletType = 1;
     }
 
-    public void render(Graphics g)
-    {
-        g.drawImage(image,(int)position.x,(int)position.y,null);
-    }
+    @Override
     public void run()
     {
-        position.add(velocity.x,velocity.y);
+        super.run();
         changeVelocity();
+        enemyFire();
     }
-
     private void changeVelocity() {
-        if(position.x > 384-28 && velocity.x > 0)
+        if(position.x > Settings.BACKGROUND_WIDTH-Settings.ENEMY_WIDTH && velocity.x > 0)
         {
             velocity.set(-velocity.x,velocity.y);
         }
@@ -38,7 +37,7 @@ public class Enemy {
         {
             velocity.set(-velocity.x,velocity.y);
         }
-        if(position.y> 600 - 28 && velocity.y >0)
+        if(position.y> Settings.GAME_HEIGHT - Settings.ENEMY_HEIGHT && velocity.y >0)
         {
             velocity.set(velocity.x,-velocity.y);
         }
@@ -47,4 +46,18 @@ public class Enemy {
             velocity.set(velocity.x,-velocity.y);
         }
     }
+    private void enemyFire()
+    {
+        fireCount+=1;
+        if(fireCount>20)
+        {
+            EnemyBullet bullet = new EnemyBullet();
+            bullet.velocity.set(0,3);
+            bullet.loadImageByType(1);
+            bullet.position.set(this.position.x,this.position.y);
+
+            fireCount = 0;
+        }
+    }
+
 }

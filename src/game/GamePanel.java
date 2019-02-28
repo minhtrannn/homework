@@ -16,21 +16,13 @@ public class GamePanel extends JPanel {
     //enemy
     public GamePanel()
     {
-        player = new Player();
+
         background = new Background();
+        player = new Player();
         enemy = new Enemy();
         //bulletPosition.add() // them phan tu vao mang
         //bulletPosition.get()//lay ra phan tu o vi tri cu the
         //bulletPosition.size()//lay ra kich thuoc cua mang
-    }
-    @Override
-    public void paint(Graphics g) {
-       // g.drawRect(0,0,100,100);
-        // load ảnh
-        background.render(g);
-        player.render(g);
-        enemy.render(g);
-        // ve anh
     }
 
     public void GameLoop()
@@ -54,13 +46,28 @@ public class GamePanel extends JPanel {
     {
         repaint();
     }
-
+    @Override
+    public void paint(Graphics g) {
+        //ve anh
+        for (int i = 0; i < GameObject.objects.size(); i++)
+        {
+            GameObject object = GameObject.objects.get(i);
+            if(object.active)
+            {
+                object.render(g);
+            }
+        }
+    }
     private void runAll()
     {
-        background.run();
-        player.run();
-        enemy.run();
-        //System.out.println(BackgroundY);
+        for (int i = 0; i < GameObject.objects.size(); i++)
+        {
+            GameObject object = GameObject.objects.get(i);
+            if(object.active)
+            {
+                object.run();
+            }
+        }
     }
 
 

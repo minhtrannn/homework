@@ -2,16 +2,14 @@ package game;
 
 import tklibs.SpriteUtils;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class PlayerBullet extends GameObject{
+public class EnemyBullet extends GameObject
+{
+    static BufferedImage type1Image = SpriteUtils.loadImage("assets/images/enemies/bullets/red.png");
+    static BufferedImage type2Image = SpriteUtils.loadImage("assets/images/enemies/bullets/yellow.png");
 
-    static BufferedImage type1Image = SpriteUtils.loadImage("assets/images/enemies/bullets/blue.png");
-    static BufferedImage type2Image = SpriteUtils.loadImage("assets/images/enemies/bullets/cyan.png");
-    static BufferedImage type3Image = SpriteUtils.loadImage("assets/images/enemies/bullets/green.png");
-
-    public PlayerBullet()
+    public EnemyBullet()
     {
         velocity.set(1,1);
         velocity.setLength(Settings.PLAYER_BULLET_SPEED);
@@ -26,10 +24,6 @@ public class PlayerBullet extends GameObject{
             case 2:
                 this.image = type2Image;
                 break;
-            case 3:
-                this.image = type3Image;
-                break;
-
             default:
                 this.image = type1Image;
         }
