@@ -4,79 +4,52 @@ import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-// class dai dien cho cua so
-public class GameWindow extends JFrame
-{
+public class GameWindow extends JFrame {
     public static boolean isUpPress;
     public static boolean isDownPress;
-    public static boolean isRightPress;
     public static boolean isLeftPress;
+    public static boolean isRightPress;
     public static boolean isFirePress;
-    public static boolean isEnterPress;
-    //static se tao ra moi thuoc tinh khi game window co 1 class
-    public GameWindow()
-    {
+
+    public GameWindow() {
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                //su kien giu phim
-                //System.out.println(e.getKeyCode());
-                if(e.getKeyCode() == KeyEvent.VK_A)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_A) {
                     isLeftPress = true;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_W)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_W) {
                     isUpPress = true;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_S)
-                {
-                    isDownPress = true;
-                }
-                if(e.getKeyCode() == KeyEvent.VK_D)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_D) {
                     isRightPress = true;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_SPACE)
-                {
-                    isFirePress = true;
+                if(e.getKeyCode() == KeyEvent.VK_S) {
+                    isDownPress = true;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
-                {
-                    isEnterPress = true;
+                if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    isFirePress = true;
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                //su kien nha phim
-                if(e.getKeyCode() == KeyEvent.VK_A)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_A) {
                     isLeftPress = false;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_W)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_W) {
                     isUpPress = false;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_S)
-                {
-                    isDownPress = false;
-                }
-                if(e.getKeyCode() == KeyEvent.VK_D)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_D) {
                     isRightPress = false;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_SPACE)
-                {
+                if(e.getKeyCode() == KeyEvent.VK_S) {
+                    isDownPress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_SPACE) {
                     isFirePress = false;
                 }
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
-                {
-                    isEnterPress = false;
-                }
             }
-        }
-        );
-        //addMouseListener();
+        });
     }
 }
